@@ -1,0 +1,31 @@
+/* Ocultás el input porque ya no hace falta verlo */
+.button-file {
+    display: none;
+}
+
+.div-button_general {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.div-button_general:hover {
+    background: #ececec;
+    transform: translateY(-2px);
+}
+
+.div-button_general i {
+    font-size: 20px;
+    color: #333;
+    transition: color 0.2s ease;
+}
+
+.div-button_general:hover i {
+    color: #000;
+}
