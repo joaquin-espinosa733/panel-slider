@@ -79,6 +79,28 @@
           <span>Subir video</span>
         </label>
         <input type="file" id="fileInput" />
+        <div
+          id="upload-progress"
+          style="
+            width: 100%;
+            background: #333;
+            height: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            overflow: hidden;
+            display: none;
+          "
+        >
+          <div
+            id="upload-bar"
+            style="
+              height: 100%;
+              width: 0%;
+              background: #4caf50;
+              transition: width 0.2s;
+            "
+          ></div>
+        </div>
       </div>
 
       <div class="videos-grid" id="videos-container">
