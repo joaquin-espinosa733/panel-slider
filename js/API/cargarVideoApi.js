@@ -8,7 +8,7 @@ fileInput.addEventListener("change", async () => {
     formData.append("video", file); // <-- este nombre lo usás en tu backend
 
     try {
-        const res = await fetch("https://novedades-three.vercel.app/cargar/", {
+        const res = await fetch("https://back-slider.onrender.com/cargar", {
             method: "POST",
             body: formData,
         });
