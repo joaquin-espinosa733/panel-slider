@@ -1,5 +1,5 @@
 async function cargarVideos() {
-    const res = await fetch("https://novedades-three.vercel.app/traer/");
+    const res = await fetch("https://novedades-three.vercel.app/traer");
     const videos = await res.json();
 
     const container = document.getElementById("videos-container");
