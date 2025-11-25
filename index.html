@@ -2,29 +2,88 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panel de Control del Slider</title>
     <link rel="stylesheet" href="./css/buttons.css" />
-    <link rel="stylesheet" href="./css/general.css" />
+    <link rel="stylesheet" href="./css/containers.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link
-      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
       rel="stylesheet"
     />
-    <title>Panel de Control del Slider</title>
+    <style>
+      .title {
+        font-size: 28px;
+        font-weight: 600;
+        color: white;
+      }
+
+      #fileInput {
+        display: none;
+      }
+
+      .videos-grid {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+      }
+
+      .video-card {
+        background: #232731;
+        padding: 12px;
+        border-radius: 16px;
+        position: relative;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        transition: 0.2s;
+      }
+      .video-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .video-thumb {
+        width: 100%;
+        height: 150px;
+        background: #15171c;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .video-thumb video {
+        height: 100%;
+        border-radius: 12px;
+      }
+
+      .controls {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    </style>
   </head>
   <body>
-    <div class="general">
-      <label for="fileInput" class="div-button_general">
-        <i class="fa-solid fa-folder-plus"></i>
-        <span>Elegir archivo</span>
-      </label>
+    <div class="panel-container">
+      <div class="header">
+        <h2 class="title">Panel de Control del Slider</h2>
 
-      <input type="file" id="fileInput" class="button-file" />
+        <label for="fileInput" class="upload-btn">
+          <i class="fa-solid fa-folder-plus"></i>
+          <span>Subir video</span>
+        </label>
+        <input type="file" id="fileInput" />
+      </div>
 
-      <div id="videos-container"></div>
+      <div class="videos-grid" id="videos-container">
+        <!-- Aquí se inyectan los videos dinámicamente -->
+      </div>
     </div>
 
     <script type="module" src="./js/API/getVideosApi.js"></script>

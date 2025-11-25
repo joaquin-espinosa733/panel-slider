@@ -1,0 +1,22 @@
+    .panel-container {
+        width: 100%;
+        max-width: 1100px;
+        background: #1a1d24;
+        border-radius: 20px;
+        padding: 35px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+
+    .actions {
+        display: flex;
+        gap: 10px;
+    }
