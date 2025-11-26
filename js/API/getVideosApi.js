@@ -33,8 +33,6 @@ async function cargarVideos() {
 
     agregarEventosDelete();
 }
-cargarVideos();
-
 
 function agregarEventosDelete() {
     const botones = document.querySelectorAll(".btn-delete");
@@ -64,3 +62,5 @@ function agregarEventosDelete() {
         });
     });
 }
+
+cargarVideos();

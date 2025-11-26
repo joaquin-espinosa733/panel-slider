@@ -12,6 +12,7 @@ fileInput.addEventListener("change", async () => {
     // mostrar barra
     progressContainer.style.display = "block";
     progressBar.style.width = "0%";
+    progressBar.style.background = "#4caf50";
 
     try {
         const xhr = new XMLHttpRequest();
@@ -32,9 +33,21 @@ fileInput.addEventListener("change", async () => {
 
                 // animación de éxito
                 progressBar.style.background = "#4caf50";
+
                 setTimeout(() => {
                     progressContainer.style.display = "none";
                 }, 800);
+
+                // ⭐️ LO IMPORTANTE: refrescar la lista
+                // ⭐ Llamar a cargarVideos si existe globalmente
+                if (typeof cargarVideos === "function") {
+                    setTimeout(() => cargarVideos(), 300);
+                }
+
+
+
+                // limpiar input para poder cargar otro
+                fileInput.value = "";
             } else {
                 console.error("Error:", xhr.responseText);
                 progressBar.style.background = "#c0392b";
@@ -50,5 +63,6 @@ fileInput.addEventListener("change", async () => {
 
     } catch (err) {
         console.error("Error al subir:", err);
+        progressBar.style.background = "#c0392b";
     }
 });
