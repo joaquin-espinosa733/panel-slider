@@ -12,7 +12,7 @@ fileInput.addEventListener("change", async () => {
 
   try {
     // 1️⃣ pedir permiso
-    const res = await fetch("https://back-slider.onrender.com/upload", {
+    const res = await fetch("https://back-slider.onrender.com/cargar/upload", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -29,7 +29,7 @@ fileInput.addEventListener("change", async () => {
     await uploadToR2(uploadUrl, file);
 
     // 3️⃣ confirmar
-    await fetch("https://back-slider.onrender.com/confirm", {
+    await fetch("https://back-slider.onrender.com/cargar/confirm", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
