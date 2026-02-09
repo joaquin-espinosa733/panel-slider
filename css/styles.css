@@ -21,3 +21,60 @@ body {
     justify-content: center;
     margin-top: 20px;
 }
+
+
+
+/* !Parte nueva */
+
+.title {
+    font-size: 28px;
+    font-weight: 600;
+    color: white;
+}
+
+#fileInput {
+    display: none;
+}
+
+.videos-grid {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.video-card {
+    background: #232731;
+    padding: 12px;
+    border-radius: 16px;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+}
+
+.video-thumb {
+    width: 100%;
+    height: 150px;
+    background: #15171c;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.video-thumb video {
+    height: 100%;
+    border-radius: 12px;
+}
+
+.controls {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
