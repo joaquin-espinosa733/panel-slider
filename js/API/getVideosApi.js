@@ -94,7 +94,6 @@ function agregarEventosSlider() {
             }
         });
     });
-    cargarVideos();
 }
 
 
