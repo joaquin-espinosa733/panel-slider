@@ -102,7 +102,23 @@ function agregarEventosSlider() {
 
                 console.log("✅ Posición actualizada");
 
-                cargarVideos();
+                // actualizar badge visual
+                const card = select.closest(".video-card");
+                const wrapper = card.querySelector(".video-wrapper");
+
+                let badge = wrapper.querySelector(".slider-badge");
+
+                if (slider) {
+                    if (!badge) {
+                        badge = document.createElement("div");
+                        badge.className = "slider-badge";
+                        wrapper.appendChild(badge);
+                    }
+
+                    badge.textContent = `#${slider}`;
+                } else {
+                    if (badge) badge.remove();
+                }
 
             } catch (error) {
                 console.error("Error actualizando slider:", error);
@@ -111,6 +127,5 @@ function agregarEventosSlider() {
         });
     });
 }
-
 
 cargarVideos();
