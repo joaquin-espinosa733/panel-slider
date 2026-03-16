@@ -5,9 +5,24 @@ async function cargarVideos() {
     const container = document.getElementById("videos-container");
     container.innerHTML = "";
 
+    // cantidad máxima de posiciones posibles
+    const maxSlides = videos.length;
+
     videos.forEach((video) => {
+
         const card = document.createElement("div");
         card.className = "video-card";
+
+        // generar opciones dinámicamente
+        let options = `<option value="">Sin slider</option>`;
+
+        for (let i = 1; i <= maxSlides; i++) {
+            options += `
+                <option value="${i}" ${video.slider == i ? "selected" : ""}>
+                    Posicion ${i}
+                </option>
+            `;
+        }
 
         card.innerHTML = `
         <div class="video-wrapper">
@@ -24,11 +39,7 @@ async function cargarVideos() {
             </button>
 
             <select class="slide-number" data-id="${video._id}">
-                <option value="">Sin slider</option>
-                <option value="1" ${video.slider == 1 ? "selected" : ""}>Posicion 1</option>
-                <option value="2" ${video.slider == 2 ? "selected" : ""}>Posicion 2</option>
-                <option value="3" ${video.slider == 3 ? "selected" : ""}>Posicion 3</option>
-                <option value="4" ${video.slider == 4 ? "selected" : ""}>Posicion 4</option>
+                ${options}
             </select>
         </div>
         `;
@@ -75,10 +86,12 @@ function agregarEventosSlider() {
 
     selects.forEach(select => {
         select.addEventListener("change", async () => {
+
             const id = select.dataset.id;
-            const slider = select.value;
+            const slider = select.value ? Number(select.value) : null;
 
             try {
+
                 await fetch(`https://back-slider.onrender.com/update/${id}`, {
                     method: "PUT",
                     headers: {
@@ -89,9 +102,12 @@ function agregarEventosSlider() {
 
                 console.log("✅ Posición actualizada");
 
+                cargarVideos();
+
             } catch (error) {
                 console.error("Error actualizando slider:", error);
             }
+
         });
     });
 }
