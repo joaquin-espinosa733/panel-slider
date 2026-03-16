@@ -19,12 +19,13 @@ async function cargarVideos() {
                     <i class="fa-solid fa-trash-can"></i>
                 </button>
 
-                <select class="slide-number" data-id="${video.id}">
-                    <option value="1">Posicion 1</option>
-                    <option value="2">Posicion 2</option>
-                    <option value="3">Posicion 3</option>
-                    <option value="4">Posicion 4</option>
-                </select>
+            <select class="slide-number" data-id="${video._id}">
+                <option value="">Sin slider</option>
+                <option value="1" ${video.slider == 1 ? "selected" : ""}>Posicion 1</option>
+                <option value="2" ${video.slider == 2 ? "selected" : ""}>Posicion 2</option>
+                <option value="3" ${video.slider == 3 ? "selected" : ""}>Posicion 3</option>
+                <option value="4" ${video.slider == 4 ? "selected" : ""}>Posicion 4</option>
+            </select>
             </div>
         `;
 
@@ -32,6 +33,7 @@ async function cargarVideos() {
     });
 
     agregarEventosDelete();
+    agregarEventosSlider();
 }
 
 function agregarEventosDelete() {
@@ -62,5 +64,33 @@ function agregarEventosDelete() {
         });
     });
 }
+
+
+function agregarEventosSlider() {
+    const selects = document.querySelectorAll(".slide-number");
+
+    selects.forEach(select => {
+        select.addEventListener("change", async () => {
+            const id = select.dataset.id;
+            const slider = select.value;
+
+            try {
+                await fetch(`https://back-slider.onrender.com/slider/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ slider })
+                });
+
+                console.log("✅ Posición actualizada");
+
+            } catch (error) {
+                console.error("Error actualizando slider:", error);
+            }
+        });
+    });
+}
+
 
 cargarVideos();
