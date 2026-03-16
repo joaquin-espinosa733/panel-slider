@@ -78,3 +78,19 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
+.video-wrapper {
+    position: relative;
+}
+
+.slider-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: #111;
+    color: white;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+}

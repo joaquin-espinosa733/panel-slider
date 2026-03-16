@@ -10,14 +10,18 @@ async function cargarVideos() {
         card.className = "video-card";
 
         card.innerHTML = `
+        <div class="video-wrapper">
+            ${video.slider ? `<div class="slider-badge">#${video.slider}</div>` : ""}
+
             <video width="240" height="240" controls>
                 <source src="${video.url}" type="video/mp4">
             </video>
+        </div>
 
-            <div class="actions">
-                <button class="btn-delete" data-id="${video._id}">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
+        <div class="actions">
+            <button class="btn-delete" data-id="${video._id}">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
 
             <select class="slide-number" data-id="${video._id}">
                 <option value="">Sin slider</option>
@@ -26,7 +30,7 @@ async function cargarVideos() {
                 <option value="3" ${video.slider == 3 ? "selected" : ""}>Posicion 3</option>
                 <option value="4" ${video.slider == 4 ? "selected" : ""}>Posicion 4</option>
             </select>
-            </div>
+        </div>
         `;
 
         container.appendChild(card);
@@ -90,6 +94,7 @@ function agregarEventosSlider() {
             }
         });
     });
+    cargarVideos();
 }
 
 
