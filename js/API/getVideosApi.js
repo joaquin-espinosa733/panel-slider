@@ -75,7 +75,7 @@ function agregarEventosSlider() {
             const slider = select.value;
 
             try {
-                await fetch(`https://back-slider.onrender.com/slider/${id}`, {
+                await fetch(`https://back-slider.onrender.com/update/${id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
